@@ -1,4 +1,5 @@
 #include "TextInput.h"
+#include <iostream>
 
 
 // Constructor
@@ -46,7 +47,8 @@ void TextInput::handleInput(sf::Event ev){
   if(!hasFocus || ev.type != sf::Event::TextEntered) {
     return; 
   } if(ev.text.unicode == 8){
-    text = text.substr(0, text.size() -1);
+    std::cout << "h" << std::endl;
+    text = text.substr(0, text.size()-1);
   } else if (text.size() < size){
     text += ev.text.unicode;
   }

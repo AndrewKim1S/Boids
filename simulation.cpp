@@ -41,7 +41,8 @@ simulation::simulation(int w, int h){
   menuTextEntry.setFont(font);
   menuTextEntry.setFillColor(sf::Color::Black);
   menuTextEntry.setCharacterSize(24);
-  menuTextEntry.setPosition(width/2.2 + 5, height/1.8 + 5);
+  menuTextEntry.setPosition(width/2.2+5, height/1.69+5);
+  menuTextEntry.setString("");
 }
 
 // Deconstructor
@@ -130,8 +131,11 @@ void simulation::displayMenu(){
   window->clear(sf::Color::Black);
   window->draw(title);
   window->draw(menuInfo);
+  
+  std::string input = menuInput.getString();
+
+  menuTextEntry.setString(input);
   window->draw(menuInput.getShape());
-  menuTextEntry.setString(menuInput.getString());
   window->draw(menuTextEntry);
   window->display();
 
@@ -141,8 +145,10 @@ void simulation::displayMenu(){
       window->close();
     }
     else if(ev.key.code == sf::Keyboard::Enter){
+      numFlocks = std::stoi(input);
       state = State::RUN;
       simState.setString("Running");
+      break;
     } else if(ev.type == sf::Event::MouseButtonReleased){
       auto pos = sf::Mouse::getPosition(*window);
       menuInput.setFocus(false);
