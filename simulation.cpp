@@ -28,7 +28,7 @@ simulation::simulation(int w, int h){
   menuInfo.setFillColor(sf::Color::White);
   menuInfo.setCharacterSize(30);
   menuInfo.setPosition(width/3, height/2);
-  menuInfo.setString("Type number of flocks &\n Press enter to continue");
+  menuInfo.setString("Type number of flocks [1-3] &\n Press enter to continue");
   
   simState.setFont(font);
   simState.setFillColor(sf::Color::White);
@@ -144,10 +144,13 @@ void simulation::displayMenu(){
       ev.key.code == sf::Keyboard::Escape){
       window->close();
     }
-    else if(ev.key.code == sf::Keyboard::Enter){
+    else if(ev.key.code == sf::Keyboard::Enter && input.size() > 0){
       numFlocks = std::stoi(input);
       state = State::RUN;
       simState.setString("Running");
+      for(int i = 0; i < numFlocks; i++){
+        createFlock();
+      }
       break;
     } else if(ev.type == sf::Event::MouseButtonReleased){
       auto pos = sf::Mouse::getPosition(*window);

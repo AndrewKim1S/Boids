@@ -47,9 +47,11 @@ void TextInput::handleInput(sf::Event ev){
   if(!hasFocus || ev.type != sf::Event::TextEntered) {
     return; 
   } if(ev.text.unicode == 8){
-    std::cout << "h" << std::endl;
     text = text.substr(0, text.size()-1);
-  } else if (text.size() < size){
+  } else if ((text.size() < size) && 
+      (ev.text.unicode == 49 ||
+      ev.text.unicode == 50 ||
+      ev.text.unicode == 51)){
     text += ev.text.unicode;
   }
 }
