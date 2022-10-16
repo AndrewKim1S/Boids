@@ -18,7 +18,7 @@ CFLAGS = -Wall -g
 LIBS = -lsfml-window -lsfml-graphics -lsfml-system
 
 # define the C source files
-SRCS = main.cpp simulation.cpp TextInput.cpp Vector.cpp
+SRCS = main.cpp simulation.cpp TextInput.cpp Vector.cpp Boid.cpp Flock.cpp
 
 # define the C object files 
 #

@@ -87,7 +87,10 @@ void simulation::pollEvents(){
         if(ev.key.code == sf::Keyboard::Escape){
           window->close();
         }
-        if(ev.key.code == sf::Keyboard::Space){
+        else if(ev.key.code == sf::Keyboard::A){
+          addBoidToFlock(1);
+        }
+        else if(ev.key.code == sf::Keyboard::Space){
           if(state == State::PAUSE){
             state = State::RUN;
             simState.setString("Running");
@@ -118,12 +121,17 @@ void simulation::render(){
 
 // Create Flock
 void simulation::createFlock(){
-
+  Flock f = Flock(rand() % 5 + 1, width, height,
+   sf::Color(rand() % 255, rand() % 255, rand() % 255));
+  flocks.push_back(f);
 }
 
 // Add Boid to Flock
-void simulation::addBoidToFlock(){
-
+void simulation::addBoidToFlock(int f){
+  float randX = rand() % (width/2) + (width/4);
+  float randY = rand() % (height/2) + (height/4);
+  std::cout << "keyboard add" << std::endl;
+  flocks[0].addBoid(randX, randY);
 }
 
 // Display Menu

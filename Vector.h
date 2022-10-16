@@ -26,6 +26,8 @@ class Vector{
     void normalize();
     std::string to_string();
     float dotProduct(Vector const &obj);
+    float distance(Vector const &obj);
+    float angle(Vector const &obj);
 
     float x;
     float y;

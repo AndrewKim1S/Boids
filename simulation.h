@@ -1,8 +1,11 @@
 #pragma once
 
 #include "TextInput.h"
+#include "Flock.h"
+#include "Boid.h"
 
 #include <iostream>
+#include <vector>
 
 class simulation{
   
@@ -27,7 +30,7 @@ class simulation{
 
     // Manage flocks
     void createFlock();
-    void addBoidToFlock();
+    void addBoidToFlock(int f);
 
     // Menu screen
     void displayMenu();
@@ -54,4 +57,6 @@ class simulation{
     sf::Text simState;
 
     TextInput menuInput;
+
+    std::vector<Flock> flocks;
 };

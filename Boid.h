@@ -10,8 +10,11 @@ class Boid{
 
   public:
     Boid();
-    Boid(float x, float y, sf::Color);
+    Boid(float x, float y, sf::Color c);
     ~Boid();
+
+    void run();
+    void flock();
 
     // Boid Laws - seperation, alignment, cohesion
     Vector seperation();
@@ -27,4 +30,6 @@ class Boid{
 
     float maxSpeed = 4;
     float maxForce = 0.5;
+
+    sf::Color color;
 };
