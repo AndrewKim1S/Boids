@@ -1,0 +1,33 @@
+#pragma once
+
+#include <iostream>
+#include <cmath>
+
+class Vector{
+
+  public:
+    // Constructor
+    Vector();
+    Vector(float x, float y);
+
+    void setVector(float x, float y);
+    
+    Vector operator+ (Vector const &obj);
+    Vector operator- (Vector const &obj);
+    Vector operator* (Vector const &obj);
+    Vector operator/ (Vector const &obj);
+
+    void scalarAdd(float x);
+    void scalarSub(float x);
+    void scalarMult(float x);
+    void scalarDiv(float x);
+
+    float getMagnitude();
+    void normalize();
+    std::string to_string();
+    float dotProduct(Vector const &obj);
+
+    float x;
+    float y;
+
+};
