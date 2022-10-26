@@ -58,5 +58,6 @@ class simulation{
 
     TextInput menuInput;
 
+    // Flock vector
     std::vector<Flock> flocks;
 };

@@ -21,8 +21,11 @@ class Flock{
   private:
     std::vector<Boid> flock;
     Vector center;
+    Vector avgVel;
     sf::Color color;
 
     int maxFlockSize = 15;
     int numBoids;
+
+    Vector Boidpos;
 };

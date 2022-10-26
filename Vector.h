@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <cmath>
+#include <SFML/Graphics.hpp>
 
 class Vector{
 
@@ -28,6 +29,8 @@ class Vector{
     float dotProduct(Vector const &obj);
     float distance(Vector const &obj);
     float angle(Vector const &obj);
+    bool isWithin(Vector pos, double r);
+    bool equals(Vector v);
 
     float x;
     float y;

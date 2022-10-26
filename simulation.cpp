@@ -108,12 +108,19 @@ void simulation::pollEvents(){
 
 // Update Game State
 void simulation::update(){
-
+  // flocks[0].flocking();
 }
 
 // Render Simulation Elements
 void simulation::render(){
-  window->clear(sf::Color::Black);
+  window->clear(sf::Color(43, 60, 72));
+
+  // Draw the Boids
+  for(size_t k = 0; k < flocks.size(); k++){
+    for(int i = 0; i < flocks[0].getFlockSize(); i++){
+      flocks[k].getBoid(i).render(*window);
+    } 
+  }
 
   window->draw(simState);
   window->display();
@@ -130,13 +137,13 @@ void simulation::createFlock(){
 void simulation::addBoidToFlock(int f){
   float randX = rand() % (width/2) + (width/4);
   float randY = rand() % (height/2) + (height/4);
-  std::cout << "keyboard add" << std::endl;
+  // std::cout << "keyboard add" << std::endl;
   flocks[0].addBoid(randX, randY);
 }
 
 // Display Menu
 void simulation::displayMenu(){
-  window->clear(sf::Color::Black);
+  window->clear(sf::Color(43, 60, 72));
   window->draw(title);
   window->draw(menuInfo);
   

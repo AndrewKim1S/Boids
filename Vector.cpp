@@ -107,3 +107,14 @@ float Vector::angle(Vector const &obj){
   }
   return acos(angle);
 }
+
+bool Vector::isWithin(Vector pos, double r){
+  double length = (x - pos.x) * (x - pos.x) + (y - pos.y) * (y - pos.y);
+  length = sqrt(length);
+  return length < r;
+}
+
+bool Vector::equals(Vector v){
+  if(v.x == x && v.y == y){ return true; }
+  return false;
+}
