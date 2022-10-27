@@ -38,8 +38,8 @@ class Boid{
     Vector v1, v2, v3;
 
     // Maximum movement parameters
-    float maxSpeed = 4;
-    float maxForce = 0.5;
+    double maxSpeed = 25;
+    double maxForce = 0.5;
 
     // For Drawing Visual
     sf::Color color;

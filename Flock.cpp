@@ -51,7 +51,8 @@ void Flock::flocking(){
     // We need to find all the boids within its visual range
     Boidpos = flock[i].getPos(); 
     std::vector<Boid> withinRange;
-    for(size_t k = 0; k < flock.size(); i++){
+    for(size_t k = 0; k < flock.size(); k++){
+      // std::cout << "looping " << 
       if(flock[k].getPos().isWithin(Boidpos, 110)){
         withinRange.push_back(flock[k]);
       }

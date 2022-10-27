@@ -31,6 +31,7 @@ class Vector{
     float angle(Vector const &obj);
     bool isWithin(Vector pos, double r);
     bool equals(Vector v);
+    void limit(double max);
 
     float x;
     float y;

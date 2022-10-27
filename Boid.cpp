@@ -51,6 +51,7 @@ Boid::~Boid(){}
 void Boid::run(){
   // First Find all of the Boids within its visual range
   velocity = velocity + v1 + v2 + v3;
+  velocity.limit(maxSpeed);
   position = position + velocity;
   shape.move(velocity.x, velocity.y);
   visualRange.move(velocity.x , velocity.y);
@@ -58,7 +59,12 @@ void Boid::run(){
 
 void Boid::render(sf::RenderTarget& window){
   window.draw(shape);
-  if(selected) { window.draw(visualRange); }
+  if(selected) { 
+    window.draw(visualRange); 
+    std::cout << "Velocity: " <<velocity.x << ", "
+      << velocity.y << std::endl;
+    std::cout << v1.x << ", " << v1.y << std::endl;
+  }
 }
 
 // Boid Laws 

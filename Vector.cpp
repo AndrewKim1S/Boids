@@ -118,3 +118,11 @@ bool Vector::equals(Vector v){
   if(v.x == x && v.y == y){ return true; }
   return false;
 }
+
+void Vector::limit(double max){
+  double size = getMagnitude();
+  if(size > max){
+    x = x/size;
+    y = y/size;
+  }
+}

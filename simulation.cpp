@@ -60,8 +60,8 @@ void simulation::run(){
   switch(state){
     case State::RUN:
       pollEvents();
-      update();
       render();
+      update();
       break;
     case State::PAUSE:
       pollEvents();
@@ -108,7 +108,7 @@ void simulation::pollEvents(){
 
 // Update Game State
 void simulation::update(){
-  // flocks[0].flocking();
+  flocks[0].flocking();
 }
 
 // Render Simulation Elements
