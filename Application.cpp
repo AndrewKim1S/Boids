@@ -194,6 +194,7 @@ void Application::update() {
 				// update all the boid positions
 				boids[i].update(neighbors);
 		}
+		
 }
 
 // return the state of the window

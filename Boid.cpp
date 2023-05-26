@@ -25,11 +25,22 @@ Boid::Boid(int x, int y, int id) {
 void Boid::render(sf::RenderWindow* window) {
 		
 		// create shape
+		sf::ConvexShape convex;
+		convex.setPointCount(3);
+		convex.setPoint(0, sf::Vector2f(0, -9));
+		convex.setPoint(1, sf::Vector2f(-5, 5));
+		convex.setPoint(2, sf::Vector2f(5, 5));
+		convex.setFillColor(color);
+		convex.setPosition(sf::Vector2f(position.x, position.y));
+		convex.setRotation(atan2(velocity.x, -velocity.y) * 180 / 3.14);
+
+		/*
 		sf::CircleShape c;
 		c.setFillColor(color);
 		c.setPosition(sf::Vector2f(position.x-size, position.y-size));
 		c.setRadius(size);
-		window->draw(c);
+		*/
+		window->draw(convex);
 }
 
 // render the vision field to the screen

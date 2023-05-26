@@ -1,0 +1,5 @@
+#Ignore all object files
+*.o
+
+#Ignore executable
+FlockingSimulation
