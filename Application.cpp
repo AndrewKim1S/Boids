@@ -29,6 +29,11 @@ Application::Application(int width, int length) {
 		createBoids();
 
 		renderQuadtree = false;
+
+		// Window movement
+		zoom = 1;
+		view = window->getDefaultView();
+		dragging = false;
 }
 
 // Deconstructor
@@ -42,8 +47,6 @@ void Application::run() {
 		switch(state) {
 				case State::RUN:
 						if(clock.getElapsedTime().asMilliseconds() > 50) {
-								// iteration ++;
-								// std::cout << "-------------- iteration: " << iteration << std::endl;
 								update();
 								render();
 								pollEvents();
@@ -133,9 +136,6 @@ void Application::pollEvents() {
 										if(state == State::PAUSE) {
 												state = State::RUN;
 										} 
-										else if(state == State::FOLLOW) {
-												break;
-										} 
 										else {
 												state = State::PAUSE;
 										}
@@ -159,6 +159,44 @@ void Application::pollEvents() {
 								else if(event.key.code == sf::Keyboard::V) {
 										renderQuadtree = !renderQuadtree;
 								}
+						
+						// Mouse Button events for screen movement
+						case sf::Event::MouseButtonPressed:
+								if(event.mouseButton.button == sf::Mouse::Left) {
+										dragging = true;
+										pos = window->mapPixelToCoords(sf::Vector2i(event.mouseButton.x,
+												event.mouseButton.y));
+								}
+								break;
+						case sf::Event::MouseButtonReleased:
+								if(event.mouseButton.button == sf::Mouse::Left) {
+										dragging = false;
+								}
+								break;
+						case sf::Event::MouseMoved:
+								if(!dragging) {
+										break;
+								}
+								newPos = window->mapPixelToCoords(sf::Vector2i(event.mouseMove.x, 
+										event.mouseMove.y));
+								delta = pos - newPos;
+
+								view.setCenter(view.getCenter() + delta);
+								window->setView(view);
+								pos = window->mapPixelToCoords(sf::Vector2i(event.mouseMove.x,
+										event.mouseMove.y));
+								break;
+						// window zoom 
+						case sf::Event::MouseWheelScrolled:
+								if(event.mouseWheelScroll.delta <= -1) {
+										zoom = std::min(2.f, zoom + 0.1f);
+								} else if(event.mouseWheelScroll.delta >= 1) {
+										zoom = std::min(0.5f, zoom - 0.1f);
+								}
+								view.setSize(window->getDefaultView().getSize());
+								view.zoom(zoom);
+								window->setView(view);
+								break;
 						default:
 								break;
 				}

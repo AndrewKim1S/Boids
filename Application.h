@@ -56,4 +56,12 @@ class Application {
 
 				bool renderQuadtree;
 
+				// Screen interaction
+				bool dragging;
+				float zoom;
+				sf::View view;
+				sf::Vector2f pos;
+				sf::Vector2f newPos;
+				sf::Vector2f delta;
+
 };

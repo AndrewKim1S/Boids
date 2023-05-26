@@ -10,7 +10,7 @@ Boid::Boid(int x, int y, int id) {
 		
 		position.x = x;
 		position.y = y;
-		color = sf::Color::White;
+		color = sf::Color(135, 197, 233);
 		size = 5;
 		visualRange = 120;
 		speed = 6;
@@ -204,7 +204,7 @@ void Boid::highlightSelected() {
 }
 
 void Boid::returnHighlight() {
-		color = sf::Color::White;
+		color = sf::Color(135, 197, 233);
 }
 
 bool Boid::equals(Boid b) {
