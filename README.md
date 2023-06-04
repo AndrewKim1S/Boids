@@ -1,4 +1,4 @@
-Boids/Flocking Simulation
+#Boids/Flocking Simulation
 
 - uses a quadtree for efficient space partitioning
 
